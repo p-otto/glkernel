@@ -13,8 +13,11 @@ namespace testEnv
 {
 
 
-template <typename T, glm::precision P, template<typename, glm::precision> class V, template<typename, glm::precision> class V2>
-void normal2(tkernel<V<T, P>> & kernel, const V<T, P> & mean, const V2<T, P> & stddev);
+//template <typename T, glm::precision P, template<typename, glm::precision> class V, template<typename, glm::precision> class U>
+//void normalAlt(tkernel<V<T, P>> & kernel, const V<T, P> & mean, const U<T, P> & stddev);
+
+//template <typename T, glm::precision P, template<typename, glm::precision> class V, typename U>
+//void normalAlt(tkernel<V<T, P>> & kernel, const V<T, P> & mean, const U &stddev);
 
 
 } // testEnv
