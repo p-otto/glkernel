@@ -1,12 +1,5 @@
 
 #
-# External dependencies
-#
-
-find_package(cppassist REQUIRED)
-find_package(cppexpose REQUIRED)
-
-#
 # Executable name and options
 #
 
@@ -19,12 +12,13 @@ set(target glkernel-playground)
 #
 
 set(headers
-    tmp.h
+    AssertionMacros.h
 )
 
 set(sources
     main.cpp
     tmp.cpp
+    TypeTraits.cpp
 )
 
 set(header_group "Header Files (API)")
@@ -80,8 +74,6 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    cppassist::cppassist
-    cppexpose::cppexpose
     ${META_PROJECT_NAME}::glkernel
 )
 

@@ -5,7 +5,7 @@
 #include <glkernel/Kernel.h>
 #include <glkernel/noise.h>
 
-#include "tmp.h"
+#include "tmp.cpp"
 
 #include <iostream>
 
