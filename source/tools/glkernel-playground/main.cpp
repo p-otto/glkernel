@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-int main(int argc, char* argv[])
+int main()
 {
     auto fkernel1 = glkernel::kernel1{ 1 };
     auto fkernel2 = glkernel::kernel2{ 1 };
@@ -33,10 +33,10 @@ int main(int argc, char* argv[])
     glkernel::testEnv::normal(fkernel3, 0.f, 1.f);
     glkernel::testEnv::normal(fkernel4, 0.f, 1.f);
 
-    glkernel::testEnv::normal(fkernel1, 0.0, 1.0);    // fail
-    glkernel::testEnv::normal(fkernel2, 0.0, 1.0);    // fail
-    glkernel::testEnv::normal(fkernel3, 0.0, 1.0);    // fail
-    glkernel::testEnv::normal(fkernel4, 0.0, 1.0);    // fail
+//    glkernel::testEnv::normal(fkernel1, 0.0, 1.0);    // fail
+//    glkernel::testEnv::normal(fkernel2, 0.0, 1.0);    // fail
+//    glkernel::testEnv::normal(fkernel3, 0.0, 1.0);    // fail
+//    glkernel::testEnv::normal(fkernel4, 0.0, 1.0);    // fail
 
 
 
