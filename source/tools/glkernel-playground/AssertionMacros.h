@@ -3,8 +3,12 @@
 #include "TypeTraits.cpp"
 
 
-#define CHECK_FLOATING_TYPE(T) static_assert(std::is_floating_point<T>::value, "Kernel is not of floating type!")
-#define CHECK_TYPE_EQUALITY(T, U, V) static_assert(isSameType<T, U, V>(), "Type of kernel parameters does not match kernel type!")
-#define CHECK_CELLTYPE_EQUALITY(V, U, W) static_assert(isSameCelltype<V, U, W>(), "Celltype of kernel parameters does not match kernel celltype!")
+#define STRINGIFY(x) #x
+#define TOSTRING(x) STRINGIFY(x)
+#define AT " In file " __FILE__ ":" TOSTRING(__LINE__) ","
+
+#define CHECK_FLOATING_TYPE(T) static_assert(std::is_floating_point<T>::value, "Kernel is not of floating type!" )
+#define CHECK_TYPE_EQUALITY(T1, T2, T3) static_assert(areSameType<T1, T2, T3>(), "Type of kernel parameters does not match kernel type!" AT "\n")
+#define CHECK_CELLTYPE_EQUALITY(V1, V2, V3) static_assert(areSameCelltype<V1, V2, V3>(), "Celltype of kernel parameters does not match kernel celltype!")
 
 //#define CHECK_ARGS_FLOATING

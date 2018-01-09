@@ -12,6 +12,7 @@ set(target glkernel-playground)
 #
 
 set(headers
+    tmp.h
     AssertionMacros.h
 )
 
