@@ -15,9 +15,9 @@
 
 //#define KERNEL_CELLTYPE_NOT_MATCH_PARAM_CELLTYPES "Celltype of kernel parameters does not match kernel celltype!"
 
-#define WHICH_IS_VEC2 ", which is tkernel<glm::vec2>."
-#define WHICH_IS_VEC3 ", which is tkernel<glm::vec3>."
-#define WHICH_IS_VEC4 ", which is tkernel<glm::vec4>."
+#define WHICH_IS_VEC2 ", which is glm::tvec2."
+#define WHICH_IS_VEC3 ", which is glm::tvec3."
+#define WHICH_IS_VEC4 ", which is glm::tvec4."
 #define PARAM_MATCH_CELL "Celltype of kernel parameters must match kernel celltype"
 #define PARAM_MATCH_VEC2 AT PARAM_MATCH_CELL WHICH_IS_VEC2
 #define PARAM_MATCH_VEC3 AT PARAM_MATCH_CELL WHICH_IS_VEC3
