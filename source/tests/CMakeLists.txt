@@ -11,6 +11,7 @@ set(META_PROJECT_NAME "glkernel")
 
 # Declare project
 project("${META_PROJECT_NAME}-tests" C CXX)
+include(CTest)
 
 # Set policies
 set_policy(CMP0028 NEW) # ENABLE  CMP0028: Double colon in target name means ALIAS or IMPORTED target.
@@ -31,18 +32,44 @@ else()
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 endif()
 
-# Function: Build test and add command to execute it via target 'test'
-function(add_test_without_ctest target)
+
+# Function: Build failuretest and register it under target 'test' via CTest automatically
+function(add_test_with_ctest target)
+
     add_subdirectory(${target})
-    
+
     if(NOT TARGET ${target})
         return()
     endif()
-    
-    add_dependencies(test ${target})
-    add_custom_command(TARGET test POST_BUILD 
+
+    if(BUILD_TESTING)
+        message("CTest ready for registering ${target}")
+        # Add the tests.  These invoke "cmake --build ..." which is a
+        # cross-platform way of building the given target.
+        add_test(NAME ${target}
+            COMMAND ${CMAKE_COMMAND} --build . --target ${target} --config $<CONFIGURATION>
+            WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+        # Expect these tests to fail (i.e. cmake --build should return
+        # a non-zero value)
+        set_tests_properties(${target} PROPERTIES WILL_FAIL TRUE)
+    endif()
+
+endfunction()
+
+
+# Function: Build test and add command to execute it via target 'tests'
+function(add_test_without_ctest target)
+    add_subdirectory(${target})
+
+    if(NOT TARGET ${target})
+        return()
+    endif()
+
+    add_dependencies(tests ${target})
+    add_custom_command(TARGET tests POST_BUILD
         COMMAND $<TARGET_FILE:${target}> --gtest_output=xml:gtests-${target}.xml)
 endfunction()
+
 
 # Build gmock
 set(gmock_build_tests           OFF CACHE BOOL "")
@@ -69,16 +96,17 @@ target_link_libraries(gmock-dev
 )
 
 
-# 
-# Target 'test'
-# 
+#
+# Target 'tests'
+#
 
-add_custom_target(test)
-set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+add_custom_target(tests)
+set_target_properties(tests PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
 
-# 
+#
 # Tests
-# 
+#
 
+add_test_with_ctest(glkernel-failuretest)
 add_test_without_ctest(glkernel-test)
