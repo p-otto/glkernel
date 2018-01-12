@@ -5,7 +5,6 @@
 
 
 
-
 namespace glkernel
 {
 
@@ -19,8 +18,6 @@ namespace testEnv
 //{
 //    // TODO
 //}
-
-
 
 
 template<typename... T>

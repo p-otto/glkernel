@@ -13,6 +13,7 @@ set(target glkernel-playground)
 
 set(headers
     tmp.h
+    StringMacros.h
     AssertionMacros.h
 )
 
@@ -20,6 +21,7 @@ set(sources
     main.cpp
     tmp.cpp
     TypeTraits.cpp
+    ConstExpressions.cpp
 )
 
 set(header_group "Header Files (API)")
