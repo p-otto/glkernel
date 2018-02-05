@@ -13,8 +13,6 @@
 #define PARAM_MATCH_FLOAT AT PARAM_MATCH_KERNEL WHICH_IS_FLOAT
 #define PARAM_MATCH_DOUBLE AT PARAM_MATCH_KERNEL WHICH_IS_DOUBLE
 
-//#define KERNEL_CELLTYPE_NOT_MATCH_PARAM_CELLTYPES "Celltype of kernel parameters does not match kernel celltype!"
-
 #define WHICH_IS_VEC2 ", which is glm::tvec2."
 #define WHICH_IS_VEC3 ", which is glm::tvec3."
 #define WHICH_IS_VEC4 ", which is glm::tvec4."

@@ -8,16 +8,10 @@
 namespace glkernel
 {
 
-namespace testEnv
+namespace noise
 {
 
-//template <typename T1, typename T2, typename T3,
-//          glm::precision P,
-//          template<typename, glm::precision> class V1, template<typename, glm::precision> class V2, template<typename, glm::precision> class V3>
-//constexpr bool areSamePrecision(tkernel<V1<T1, P>> & kernel, const V2<T2, P> & mean, const V3<T3, P> & stddev)
-//{
-//    // TODO
-//}
+
 
 
 template<typename... T>

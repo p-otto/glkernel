@@ -11,8 +11,14 @@
 namespace glkernel
 {
 
-namespace testEnv
+namespace noise
 {
+
+
+/*
+ * These methods are mainly used for actually typing the assertions.
+ * Later the lines are copied to AssertionMacros.h.
+ */
 
 
 template<typename T, typename... Ts>
