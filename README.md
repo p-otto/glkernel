@@ -1,5 +1,8 @@
 # glkernel
-C++ library for pre-computing noise, and random sample-kernels.
+*glkernel* is a C++ library for pre-computing noise and random sample-kernels.
+
+[![Travis](https://img.shields.io/travis/p-otto/glkernel/master.svg?style=flat&logo=travis)](https://travis-ci.org/otto/glkernel)
+[![Tokei](https://tokei.rs/b1/github/p-otto/glkernel)](https://github.com/Aaronepower/tokei)
 
 ## Project Health (master)
 
