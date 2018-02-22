@@ -1,8 +1,9 @@
 # glkernel
 *glkernel* is a C++ library for pre-computing noise and random sample-kernels.
 
-[![Travis](https://img.shields.io/travis/p-otto/glkernel/master.svg?style=flat&logo=travis)](https://travis-ci.org/p-otto/glkernel)
-[![Tokei](https://tokei.rs/b1/github/p-otto/glkernel)](https://github.com/Aaronepower/tokei)
+[![Travis](https://img.shields.io/travis/cginternals/glkernel/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glkernel)
+[![Coveralls](https://img.shields.io/badge/coveralls-ToDo-lightgrey.svg?)](https://coveralls.io/github/cginternals/glkernel)
+[![Tokei](https://tokei.rs/b1/github/cginternals/glkernel)](https://github.com/Aaronepower/tokei)
 
 ## Project Health (master)
 
