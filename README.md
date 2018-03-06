@@ -32,7 +32,10 @@ ToDo
 
 ##### Dependencies
 
-ToDo
+Using glkernel requires a C++11 compatible compiler.
+For linking against glkernel: `glm`
+For multithreading support (optional): `OpenMP` for multithreading support
+For building the glkernel tests: `cmake` Version 3.1 or newer
 
 ##### Linking binaries
 
