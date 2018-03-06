@@ -30,7 +30,17 @@ ToDo
 
 ##### Linking binaries
 
-ToDo
+Glkernel is a header-only library, so linking is as simple as including the headers providing the needed functionality. Currently there are:
+```
+<noise.h> // for filling kernels with noise
+<sample.h> // for sampling of kernels
+<scale.h> // for scaling of kernels
+<sequence.h> // 
+<shuffle.h> // for shuffling the elements of a kernel
+<sort.h> // for sorting the elements of a kernel
+```
+
+You probably also want to include the appropriate `glm` vectors and depending on your include discipline also the header `Kernel.h` which is included in the above headers.
 
 ##### glkernel-cmd
 
