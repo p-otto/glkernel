@@ -28,7 +28,24 @@ Some kernel operations can make use of thread level parallelism. This is achieve
 
 ## Using glkernel
 
-ToDo
+Before using glkernel, it is important to get clear about the following three properties of a kernel:
+* Dimension
+* Cell type
+* Component type
+
+###### Dimension
+Defines in how many dimensions a kernel extends. Can be compared to the dimension of a tensor.
+The dimension is defined implicitly by the kernel's size, which is determined for each dimension.
+A kernel of size `{4, 1, 2}` has the dimension _three_.
+
+###### Cell type
+The number of cells is determined by the kernel's size. In the example above, the kernel would contain eight cells. These cells can be of different cell types. However, the cell type must be homogeneous for the entire kernel. Cells can be of a scalar (_one_ component per cell) or of a vectorial (_two_, _three_ or _four_ components per cell) type.
+
+###### Component type
+The component type specifies of which type the values (= components) within a kernel are. Again, the component type must be homogeneous. This is most likely a matter of precision and `float` or `double` would be appropriate component types.
+
+
+### As a library
 
 ##### Dependencies
 
@@ -37,21 +54,58 @@ For linking against glkernel: `glm`
 For multithreading support (optional): `OpenMP` for multithreading support
 For building the glkernel tests: `cmake` Version 3.1 or newer
 
-##### Linking binaries
+##### Linking
 
-Glkernel is a header-only library, so linking is as simple as including the headers providing the needed functionality. Currently there are:
+Glkernel is a header-only library, so linking is as simple as including the headers providing the needed functionality.
+For flexibel kernel instantiation, you need to:
+```cpp
+#include <glm/vec2.hpp>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glkernel/Kernel.h>
 ```
-<noise.h> // for filling kernels with noise
-<sample.h> // for sampling of kernels
-<scale.h> // for scaling of kernels
-<sequence.h> // 
-<shuffle.h> // for shuffling the elements of a kernel
-<sort.h> // for sorting the elements of a kernel
+This allows the instantiation of kernels with scalar or vectorial cell types. Following this, a kernel can be used within methods of different namespaces each providing specific functionality. According to your purpose, you need to:
+```cpp
+#include <glkernel/noise.h>     // Kernel generation based on noise
+#include <glkernel/sample.h>    // Kernel generation based on sampling
+#include <glkernel/scale.h>     // Kernel transformation by range adjustments
+#include <glkernel/sequence.h>  // WHAT FOR?!
+#include <glkernel/shuffle.h>   // Kernel transformation by shuffling of elements
+#include <glkernel/sort.h>      // Kernel transformation by sorting of elements
 ```
 
-You probably also want to include the appropriate `glm` vectors and depending on your include discipline also the header `Kernel.h` which is included in the above headers.
 
-##### glkernel-cmd
+##### Usage
+The following aliases are ___already defined by glkernel___ for comfortable usage:
+```cpp
+using kernel1  = tkernel<float>;		// Cell type: scalar, Component type: float
+using kernel2  = tkernel<glm::vec2>;	// Cell type: vec2,   Component type: float
+using kernel3  = tkernel<glm::vec3>;	// Cell type: vec3,   Component type: float
+using kernel4  = tkernel<glm::vec4>;	// Cell type: vec4,   Component type: float
+
+using dkernel1 = tkernel<double>;		// Cell type: scalar, Component type: double
+using dkernel2 = tkernel<glm::dvec2>;	// Cell type: vec2,   Component type: double
+using dkernel3 = tkernel<glm::dvec3>;	// Cell type: vec3,   Component type: double
+using dkernel4 = tkernel<glm::dvec4>;	// Cell type: vec4,   Component type: double
+```
+As you can see from the aliases above, the __cell-__ and __component__ type are specified by the kernel class' template arguments. The __dimension__ must be specified during the instantiation.
+The following example shows a basic usage of the glkernel library:
+
+```cpp
+auto fkernel2 = glkernel::kernel2{4, 1, 1};         // Instantiate 3D float kernel with two components per cell
+glkernel::sample::golden_point_set(fkernel2);       // Generate 'golden point set'
+glkernel::scale::range(fkernel2, -0.5f, 0.5f);)     // Scale kernel to [-0.5, 0.5] in each dimension
+glkernel::shuffle::random(fkernel2);                // Shuffle elements randomly
+```
+
+A similar example that is enriched with element access and helpfull console output can be found in:
+NEEDS TO BE DONE!
+
+
+
+
+### Via command line interface
+###### glkernel-cmd
 
 Additionally to using glkernel as a library, there is a standalone command line tool to generate kernels from JSON descriptions.
 The usage is as follows: ```glkernel-cmd --i {input filename} --o {output filename}```, where ```{input filename}``` is a JSON kernel description file and ```{output file}``` is a JSON file containing a kernel.
