@@ -14,11 +14,17 @@ C++ library for pre-computing noise, and random sample-kernels.
 
 ## Features
 
-ToDo
+* Smart template error messages
+* Automatic multithreading using OpenMP
 
-##### Feature
+##### Smart template error messages
 
-ToDo
+Most operations on kernels operate a kernel as well as additional parameters. This may lead to type mismatch if the element types of the kernel and the additional parameters do not match.
+This case is caught by glm and a helpful error message is provided to the developer in this case.
+
+#### Automatic multithreading using OpenMP
+
+Some kernel operations can make use of thread level parallelism. This is achieved through OpenMP. If OpenMP is found on your system, this option is compiled in by default. If you want to ensure to run on only one core or you are developing for a single core machine, you might want to disable this behaviour in the CMake configuration.
 
 ## Using glkernel
 
