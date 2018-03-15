@@ -50,8 +50,11 @@ The component type specifies of which type the values (= components) within a ke
 ##### Dependencies
 
 Using glkernel requires a C++11 compatible compiler.
+
 For linking against glkernel: `glm`
+
 For multithreading support (optional): `OpenMP` for multithreading support
+
 For building the glkernel tests: `cmake` Version 3.1 or newer
 
 ##### Linking
@@ -68,8 +71,8 @@ This allows the instantiation of kernels with scalar or vectorial cell types. Fo
 ```cpp
 #include <glkernel/noise.h>     // Kernel generation based on noise
 #include <glkernel/sample.h>    // Kernel generation based on sampling
+#include <glkernel/sequence.h>  // Kernel generation based on regular sequences
 #include <glkernel/scale.h>     // Kernel transformation by range adjustments
-#include <glkernel/sequence.h>  // WHAT FOR?!
 #include <glkernel/shuffle.h>   // Kernel transformation by shuffling of elements
 #include <glkernel/sort.h>      // Kernel transformation by sorting of elements
 ```
@@ -78,15 +81,15 @@ This allows the instantiation of kernels with scalar or vectorial cell types. Fo
 ##### Usage
 The following aliases are ___already defined by glkernel___ for comfortable usage:
 ```cpp
-using kernel1  = tkernel<float>;		// Cell type: scalar, Component type: float
-using kernel2  = tkernel<glm::vec2>;	// Cell type: vec2,   Component type: float
-using kernel3  = tkernel<glm::vec3>;	// Cell type: vec3,   Component type: float
-using kernel4  = tkernel<glm::vec4>;	// Cell type: vec4,   Component type: float
+using kernel1  = tkernel<float>;        // Cell type: scalar, Component type: float
+using kernel2  = tkernel<glm::vec2>;    // Cell type: vec2,   Component type: float
+using kernel3  = tkernel<glm::vec3>;    // Cell type: vec3,   Component type: float
+using kernel4  = tkernel<glm::vec4>;    // Cell type: vec4,   Component type: float
 
-using dkernel1 = tkernel<double>;		// Cell type: scalar, Component type: double
-using dkernel2 = tkernel<glm::dvec2>;	// Cell type: vec2,   Component type: double
-using dkernel3 = tkernel<glm::dvec3>;	// Cell type: vec3,   Component type: double
-using dkernel4 = tkernel<glm::dvec4>;	// Cell type: vec4,   Component type: double
+using dkernel1 = tkernel<double>;       // Cell type: scalar, Component type: double
+using dkernel2 = tkernel<glm::dvec2>;   // Cell type: vec2,   Component type: double
+using dkernel3 = tkernel<glm::dvec3>;   // Cell type: vec3,   Component type: double
+using dkernel4 = tkernel<glm::dvec4>;   // Cell type: vec4,   Component type: double
 ```
 As you can see from the aliases above, the __cell-__ and __component__ type are specified by the kernel class' template arguments. The __dimension__ must be specified during the instantiation.
 The following example shows a basic usage of the glkernel library:
