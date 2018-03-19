@@ -88,8 +88,8 @@ using dkernel2 = tkernel<glm::dvec2>;   // Cell type: vec2,   Component type: do
 using dkernel3 = tkernel<glm::dvec3>;   // Cell type: vec3,   Component type: double
 using dkernel4 = tkernel<glm::dvec4>;   // Cell type: vec4,   Component type: double
 ```
-As you can see from the aliases above, the __cell-__ and __component__ type are specified by the kernel class' template arguments. The __dimension__ must be specified during the instantiation.
-The following example shows a basic usage of the glkernel library:
+As you can see from the aliases above, the __cell-__ and __component__ type are specified by the kernel class' template arguments. The __dimension__ must be specified during the instantiation.  
+The following snippet shows a basic order in which the glkernel library can be used:
 
 ```cpp
 auto fkernel2 = glkernel::kernel2{4, 1, 1};         // Instantiate 3D float kernel with two components per cell
@@ -97,9 +97,6 @@ glkernel::sample::golden_point_set(fkernel2);       // Generate 'golden point se
 glkernel::scale::range(fkernel2, -0.5f, 0.5f);)     // Scale kernel to [-0.5, 0.5] in each dimension
 glkernel::shuffle::random(fkernel2);                // Shuffle elements randomly
 ```
-
-A similar example that is enriched with element access and helpfull console output can be found in:
-NEEDS TO BE DONE!
 
 
 
